@@ -31,26 +31,33 @@ const initConfig = () => {
     config = configFileData;
 };
 
-const log = async (logType, text) => {
-    if (typeof text === 'object') text = JSON.stringify(text, null, 2);
+const log = async (logType, textData) => {
+    if (typeof textData === 'object') textData = JSON.stringify(textData, null, 2);
 
     const logTypeInfo = config.logTypes[logType];
     if (!logTypeInfo) throw new Error(`@lawlzer/logging: In the logging config, there is no colour for the log type ${logType}.`);
+    const writeToFolder = config.writeToFolder;
 
-    const colour = logTypeInfo.colour;
-    const folderName = logTypeInfo.folderName;
     const bold = logTypeInfo.bold;
     const underline = logTypeInfo.underline;
 
-    let outputText = chalk.hex(colour)(text);
-    if (bold) outputText = chalk.bold(outputText);
-    if (underline) outputText = chalk.underline(outputText);
+    let logTypeText = logType;
+    if (bold) logTypeText = chalk.bold(logTypeText);
+    if (underline) logTypeText = chalk.underline(logTypeText);
 
-    if (!folderName) return; // No folder name, so it's not necessary to be logged
-    await Helpers.ensureExists(path.join(logFolderPath, folderName));
+    if (logTypeInfo.logTypePrimaryColour) logTypeText = chalk.hex(logTypeInfo.logTypePrimaryColour)(logTypeText);
+    if (logTypeInfo.logTypeBackgroundColour) logTypeText = chalk.bgHex(logTypeInfo.logTypeBackgroundColour)(logTypeText);
+
+    if (logTypeInfo.dataPrimaryColour) textData = chalk.hex(logTypeInfo.dataPrimaryColour)(textData);
+    if (logTypeInfo.dataBackgroundColour) textData = chalk.bgHex(logTypeInfo.dataBackgroundColour)(textData);
+
+    console.log(`${logTypeText}: ${textData}`);
+
+    if (!writeToFolder) return; // No folder name, so it's not necessary to be logged
+    await Helpers.ensureExists(path.join(logFolderPath, logType.toLowerCase()));
     const newFileName = `${Date.now()}_${Helpers.returnRandomCharacters(50, { symbols: false })}.txt`;
-    const filePath = path.join(logFolderPath, folderName, newFileName);
-    await fsPromises.writeFile(filePath, JSON.stringify(text, null, 2));
+    const filePath = path.join(logFolderPath, logType.toLowerCase(), newFileName);
+    await fsPromises.writeFile(filePath, JSON.stringify(textData, null, 2));
 };
 initConfig();
 
