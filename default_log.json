@@ -1,0 +1,102 @@
+{
+    "logFolderPath": "./logs",
+    "logTypes": {
+        "info": {
+            "colour": "#D3D3D3",
+            "folderName": "info"
+        },
+        "warning": {
+            "colour": "#FFA500",
+            "folderName": "warning"
+        },
+        "debug": {
+            "colour": "#FF6EC7",
+            "folderName": "debug",
+            "bold": true
+        },
+        "white": {
+            "colour": "#ffffff",
+            "folderName": ""
+        },
+        "hotPink": {
+            "colour": "#FF0007F",
+            "folderName": ""
+        },
+        "green": {
+            "colour": "#00ff00",
+            "folderName": ""
+        },
+        "blue": {
+            "colour": "#0000ff",
+            "folderName": ""
+        },
+        "yellow": {
+            "colour": "#ffff00",
+            "folderName": ""
+        },
+        "orange": {
+            "colour": "#ffa500",
+            "folderName": ""
+        },
+        "pink": {
+            "colour": "#ff00ff",
+            "folderName": ""
+        },
+        "purple": {
+            "colour": "#800080",
+            "folderName": ""
+        },
+        "brown": {
+            "colour": "#a52a2a",
+            "folderName": ""
+        },
+        "black": {
+            "colour": "#000000",
+            "folderName": ""
+        },
+        "gray": {
+            "colour": "#808080",
+            "folderName": ""
+        },
+        "cyan": {
+            "colour": "#00ffff",
+            "folderName": ""
+        },
+        "magenta": {
+            "colour": "#ff00ff",
+            "folderName": ""
+        },
+        "silver": {
+            "colour": "#c0c0c0",
+            "folderName": ""
+        },
+        "maroon": {
+            "colour": "#800000",
+            "folderName": ""
+        },
+        "olive": {
+            "colour": "#808000",
+            "folderName": ""
+        },
+        "navy": {
+            "colour": "#000080",
+            "folderName": ""
+        },
+        "teal": {
+            "colour": "#008080",
+            "folderName": ""
+        },
+        "lime": {
+            "colour": "#00ff00",
+            "folderName": ""
+        },
+        "indigo": {
+            "colour": "#4b0082",
+            "folderName": ""
+        },
+        "violet": {
+            "colour": "#ee82ee",
+            "folderName": ""
+        }
+    }
+}
